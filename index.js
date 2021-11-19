@@ -24,7 +24,7 @@ admin.initializeApp({
 
 
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_pass}@cluster0.ffgwy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ffgwy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 console.log(uri)
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -51,12 +51,17 @@ next()
       const usersCollection = database.collection('users')
       const newsCollection=database.collection('news')
       // query for movies that have a runtime less than 15 minutes
+
+
+
       app.get('/bikes', async (req, res) => {
         const cursor = bikesCollection.find({})
 
         const bikes = await cursor.toArray();
         res.send(bikes)
       })
+
+
       // get each bike by id
       app.get('/bikes/:id', async (req, res) => {
         const id = req.params.id;
@@ -195,11 +200,11 @@ next()
       })
 
       // // getting new api
-      // app.get('/news',async(req,res)=>{
-      //   const cursor=newsCollection.find({})
-      //   const news=await cursor.toArray()
-      //   res.send(news)
-      // })
+      app.get('/news',async(req,res)=>{
+        const cursor=newsCollection.find({})
+        const news=await cursor.toArray()
+        res.send(news)
+      })
 
     } finally {
       //   await client.close();
