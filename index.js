@@ -167,7 +167,7 @@ next()
         const requester=(req.decodedEmail)
         if(requester){
           const requesterAccount= await usersCollection.findOne({email:requester})
-          if(requesterAccount?.role==='admin'){
+          if(requesterAccount?.role=='admin'){
             const updateDoc={
               $set:{
                 role:'admin'
@@ -188,7 +188,7 @@ next()
         const filter = { email }
         const result = await usersCollection.findOne(filter)
         let isAdmin = false;
-        if (result.role == 'admin') {
+        if (result?.role == 'admin') {
           isAdmin = true
         }
         res.json({ admin: isAdmin })
