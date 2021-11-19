@@ -194,12 +194,12 @@ next()
         res.json({ admin: isAdmin })
       })
 
-      // getting new api
-      app.get('/news',async(req,res)=>{
-        const cursor=newsCollection.find({})
-        const news=await cursor.toArray()
-        res.send(news)
-      })
+      // // getting new api
+      // app.get('/news',async(req,res)=>{
+      //   const cursor=newsCollection.find({})
+      //   const news=await cursor.toArray()
+      //   res.send(news)
+      // })
 
     } finally {
       //   await client.close();
